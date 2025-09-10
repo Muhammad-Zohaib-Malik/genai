@@ -59,7 +59,6 @@ async function main() {
   }
 }
 
-//   console.log(JSON.stringify(completion.choices[0].message, null, 2));
 
 main();
 
