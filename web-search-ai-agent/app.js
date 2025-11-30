@@ -7,7 +7,7 @@ async function main() {
       {
         role: "system",
         content: `you are smart assistant who answers the asked questions.
-        you have access to a tool called webSearch that helps you search the lastes information and real-time data from the web.
+        you have access to a tool called webSearch that helps you search the lastest information and real-time data from the web.
         `,
       },
       {
@@ -23,7 +23,7 @@ async function main() {
         function: {
           name: "webSearch",
           description:
-            "search the lastes information and real-time data from the web",
+            "search the lastest information and real-time data from the web",
           parameters: {
             type: "object",
             properties: {
@@ -58,7 +58,6 @@ async function main() {
     }
   }
 }
-
 
 main();
 
