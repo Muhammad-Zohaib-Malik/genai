@@ -1,5 +1,7 @@
 import Groq from "groq-sdk";
+import { tavily } from "@tavily/core";
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const tvly = tavily({ apiKey: process.env.TRAVILY_API_KEY });
 
 async function main() {
   const completion = await groq.chat.completions.create({
@@ -50,7 +52,7 @@ async function main() {
   for (const tool of toolCalls) {
     console.log(`Tool call:`, tool);
     const functionName = tool.function.name;
-    const args = tool.function.arguments;
+    let args = tool.function.arguments;
 
     if (functionName === "webSearch") {
       const toolResult = await webSearch(JSON.parse(args));
@@ -63,5 +65,7 @@ main();
 
 async function webSearch({ query }) {
   console.log(`Searching the web for query: ${query}`);
+  const response = await tvly.search(query);
+  console.log("response", response);
   return "iphone16 was realesed in september 2024 with a starting price of $999";
 }
